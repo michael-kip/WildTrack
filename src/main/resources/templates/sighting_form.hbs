@@ -1,0 +1,43 @@
+{{#partial "content"}}
+
+
+    <form action="/endangered/new" method="post">
+        <div class="form-group text-white">
+            <label for="">Animal name</label>
+            <input type="text" class="form-control" name="name" id="name" class="name" placeholder="lion">
+        </div>
+        <div class="form-group text-white">
+            <label for="age">Animal Age</label>
+            <select class="form-control" id="age" name="age">
+                <option>Adult</option>
+                <option>Young</option>
+                <option>NewBorn</option>
+            </select>
+        </div>
+        <div>
+            <label class="text-white" for="health">Animal Health</label>
+            <select class="form-control" id="health" name="health">
+                <option>ill</option>
+                <option>average</option>
+                <option>healthy</option>
+            </select>
+        </div>
+        <div>
+            <label  class="text-white" for="location">location</label>
+            <select class="form-control" id="location" name="location">
+                <option>section A</option>
+                <option>section B</option>
+                <option>section C</option>
+            </select>
+        </div>
+        <div class="form-group text-white">
+            <label for="ranger">Ranger name</label>
+            <input type="text" class="form-control" name="ranger" id="ranger" class="ranger" placeholder="Ranger name">
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-success ">Add Animal</button>
+        </div>
+    </form>
+
+{{/partial}}
+{{> layout.hbs}}

@@ -1,0 +1,10 @@
+{{#partial "content"}}
+    <form action="/nonEndangered/new" method="post">
+        <div class="form-group">
+            <label for="animal">name of animal</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="animal name">
+        </div>
+        <button type="submit" class="btn btn-success">Add Animal</button>
+    </form>
+{{/partial}}
+{{> layout.hbs}}
