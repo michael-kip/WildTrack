@@ -1,5 +1,6 @@
 package models;
 
+import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,5 +16,9 @@ public class AnimalTest{
         Animal animal = new AddAnimal("Lion");
         assertEquals("Lion", animal.getName());
 
+    }
+    @After
+    public void tearDown() {
+        Animal.deleteAll(); //clear out all the posts before each test.
     }
 }

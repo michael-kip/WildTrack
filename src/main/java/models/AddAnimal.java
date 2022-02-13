@@ -7,15 +7,18 @@ public class AddAnimal extends Animal{
     }
 
     public String getName(){
+
         return name;
     }
 
     public  void setId(int id){
+
         this.id=id;
     }
 
     @Override
     public String getType() {
+
         return super.getType();
     }
 }
