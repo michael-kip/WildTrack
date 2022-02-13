@@ -10,4 +10,10 @@ public class AnimalTest{
         Animal animal = new AddAnimal("name");
         assertEquals(true, animal instanceof Animal);
     }
+    @Test
+    public void AnimalInstantiatesWithContent_true() throws Exception {
+        Animal animal = new AddAnimal("Lion");
+        assertEquals("Lion", animal.getName());
+
+    }
 }
