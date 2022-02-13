@@ -6,6 +6,9 @@ public class AddAnimal extends Animal{
         this.id=id;
     }
 
+    public static void getAll() {
+    }
+
     public String getName(){
 
         return name;
