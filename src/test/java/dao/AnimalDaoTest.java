@@ -18,4 +18,11 @@ public class AnimalDaoTest {
         animalDao.add(animal);
         assertNotEquals(myid, animal.getId());
     }
+    @Test
+    public void findAll() {
+        Animal animal = new AddAnimal("lion");
+        animalDao.add(animal);
+        Animal foundEndangered = animalDao.findById(animal.getId());
+        assertNotEquals(animal,foundEndangered);
+    }
 }
