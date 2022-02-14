@@ -71,7 +71,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             List<EndangeredAnimals> endangeredAnimals=sql2oAnimalDao.findAll();
             model.put("endangeredAnimals",endangeredAnimals);
-            return  new ModelAndView(model,"animal_view.hbs");
+            return  new ModelAndView(model,"endangered_view.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/endangered/delete", (req, res) -> {
