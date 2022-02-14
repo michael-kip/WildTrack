@@ -3,7 +3,7 @@ package models;
 import java.util.Objects;
 
 public class EndangeredAnimals extends Animal {
-    public EndangeredAnimals(String health, String age, String location, String ranger) {
+    public EndangeredAnimals(String name, String health, String age, String location, String ranger) {
         this.health = health;
         this.age = age;
         this.location = location;
@@ -70,5 +70,8 @@ public class EndangeredAnimals extends Animal {
     @Override
     public int hashCode() {
         return Objects.hash(health, age, location, ranger);
+    }
+
+    public void add(EndangeredAnimals endangeredAnimals) {
     }
 }

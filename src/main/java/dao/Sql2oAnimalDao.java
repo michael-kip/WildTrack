@@ -9,14 +9,12 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Sql2oAnimalDao implements AnimalDao {
+public class  Sql2oAnimalDao implements AnimalDao {
     private Sql2o sql2o;
     public Sql2oAnimalDao(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
 
-
-    @Override
     public void add(Animal animal) {
         String sql = "INSERT INTO endangered (name,health,age,location,ranger) VALUES(:name,:health,:age,:location,:ranger)";
         try(org.sql2o.Connection con= sql2o.open()){
@@ -29,8 +27,6 @@ public class Sql2oAnimalDao implements AnimalDao {
             System.out.println(e);
         }
     }
-
-    @Override
     public List<EndangeredAnimals> findAll() {
         try( org.sql2o.Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM endangered ")

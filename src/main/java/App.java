@@ -41,14 +41,14 @@ public class App {
             String location = request.queryParams("location");
             String ranger = request.queryParams("ranger");
 
-            EndangeredAnimals endangeredAnimals =new EndangeredAnimals(health, age, location, ranger);
+            EndangeredAnimals endangeredAnimals =new EndangeredAnimals(name,health, age, location, ranger);
             sql2oEndangeredDao.add(endangeredAnimals);
             return  new ModelAndView(model,"endangered_view.hbs");
         },new HandlebarsTemplateEngine());
 
 
 
-        get("/endangered_view", (req, res) -> {
+        get("/endangered_view/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<EndangeredAnimals>endangeredAll1=sql2oEndangeredDao.findAll();
             model.put("endangeredAll1",endangeredAll1);

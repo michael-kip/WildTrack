@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AnimalDao {
     void add(Animal animal);
-    List<Animal> findAll();
+    List<EndangeredAnimals> findAll();
     Animal findById(int id);
     void deleteAll();
     void deleteById(int id);
