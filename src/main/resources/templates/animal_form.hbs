@@ -1,10 +1,18 @@
 {{#partial "content"}}
-    <form action="/animal_view" method="post">
-        <div class="form-group">
-            <label for="name">name of animal</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="animal name">
-        </div>
-        <button type="submit" class="btn btn-success">Add Animal</button>
-    </form>
+    <h3>Add animal</h3>
+    <div class="container">
+        <div class="col col-md-3"></div>
+        <div class="col col-md-6 form-centre ">
+            <br>
+            <form action="/animal_view" method="post">
+                 <div class="form-group">
+                     <label for="name">name of animal</label>
+                     <input type="text" class="form-control" id="name" name="name" placeholder="animal name">
+                 </div>
+                 <button type="submit" class="btn btn-secondary">Add Animal</button>
+            </form>
+         </div>
+         <div class="col col-md-3"></div>
+    </div>
 {{/partial}}
 {{> layout.hbs}}
