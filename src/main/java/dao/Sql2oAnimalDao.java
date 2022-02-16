@@ -10,27 +10,29 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 
 public class  Sql2oAnimalDao implements AnimalDao {
-    private Sql2o sql2o;
+    private final Sql2o sql2o;
     public Sql2oAnimalDao(Sql2o sql2o) {
-        this.sql2o = sql2o;
-    }
 
+        this.sql2o = sql2o; //makes sql2o available everywhere for methods to be called on it
+    }
+    @Override
     public void add(Animal animal) {
         String sql = "INSERT INTO endangered (name,health,age,location,ranger) VALUES(:name,:health,:age,:location,:ranger)";
-        try(org.sql2o.Connection con= sql2o.open()){
-            int id = (int) con.createQuery(sql,true)
-                    .bind(animal)
-                    .executeUpdate()
-                    .getKey();
-            animal.setId(id);
-        }catch (Sql2oException e){
-            System.out.println(e);
+        try(org.sql2o.Connection con= sql2o.open()){//open a connection
+            int id = (int) con.createQuery(sql,true)//make new variable
+                    .bind(animal)//map argument onto query
+                    .executeUpdate()//run it all
+                    .getKey();//int id is row no of db
+            animal.setId(id);//update object to set id from db
+        }catch (Sql2oException ex){
+            System.out.println(ex);
         }
     }
+    @Override
     public List<EndangeredAnimals> findAll() {
-        try( org.sql2o.Connection con = sql2o.open()) {
+        try( Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM endangered ")
-                    .executeAndFetch(EndangeredAnimals.class);
+                    .executeAndFetch(EndangeredAnimals.class);//fetch list
         }
     }
 
@@ -39,8 +41,8 @@ public class  Sql2oAnimalDao implements AnimalDao {
     public Animal findById(int id) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM animals WHERE id=:id")
-                    .addParameter("id",id)
-                    .executeAndFetchFirst(Animal.class);
+                    .addParameter("id",id)//key/value pair,
+                    .executeAndFetchFirst(Animal.class);//fetch an individual
         }
     }
 
@@ -50,8 +52,8 @@ public class  Sql2oAnimalDao implements AnimalDao {
         try(org.sql2o.Connection con = sql2o.open()){
             con.createQuery(sql)
                     .executeUpdate();
-        }catch(Sql2oException e){
-            System.out.println(e);
+        }catch(Sql2oException ex){
+            System.out.println(ex);
         }
 
     }
@@ -60,10 +62,11 @@ public class  Sql2oAnimalDao implements AnimalDao {
     public void deleteById(int id) {
         String sql = "DELETE FROM endangered WHERE id=:id";
         try(org.sql2o.Connection con = sql2o.open()){
-            con.createQuery(sql).addParameter("id",id)
+            con.createQuery(sql)
+                    .addParameter("id",id)
                     .executeUpdate();
-        }catch(Sql2oException e){
-            System.out.println("runnn");
+        }catch(Sql2oException ex){
+            System.out.println(ex);
         }
     }
 }

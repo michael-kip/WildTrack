@@ -13,7 +13,7 @@ public class Sql2oEndangeredDao implements EndangeredDao{
     public Sql2oEndangeredDao(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
-//    Sql2o sql2o = new  Sdl2o("jdbc:postgresql://localhost:4567/wildlife","moringa","1234");
+    //Sql2o sql2o = new  Sdl2o("jdbc:postgresql://localhost:4567/wildlife","postgress","Access");
     @Override
     public void add(EndangeredAnimals endangeredAnimals) {
         String sql = "INSERT INTO endangered (name,health,age,location,ranger) VALUES(:name,:health,:age,:location,:ranger)";

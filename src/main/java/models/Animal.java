@@ -24,8 +24,7 @@ public abstract class Animal {
         return name = name;
     }
 
-    public String getType()
-    {
+    public String getType() {
         return type;
     }
 
@@ -33,13 +32,12 @@ public abstract class Animal {
     public void setId(int id){
         this.id = id;}
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setType(String type)
-    {
+    public void setType(String type) {
         this.type = type;
     }
+
 }

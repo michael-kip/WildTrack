@@ -17,9 +17,8 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
-//        Sql2o sql2o= new Sql2o("jdbc:postgresql://localhost:4567/wildtracker","moringa","");
-        String connectmetodatabase = "jdbc:h2:~/wildtracker.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectmetodatabase, "moringa", "");
+        String connectmetodatabase = "jdbc:postgresql://localhost:5432/wildlife_tracker";
+        Sql2o sql2o = new Sql2o(connectmetodatabase, "moringa", "mynewpassword");
         Sql2oAnimalDao sql2oAnimalDao = new Sql2oAnimalDao(sql2o);
         Sql2oEndangeredDao sql2oEndangeredDao = new Sql2oEndangeredDao(sql2o);
         get("/",(request,response)->{
@@ -65,6 +64,13 @@ public class App {
             AddAnimal addAnimal = new AddAnimal(name);
             sql2oAnimalDao.add(addAnimal);
             return new ModelAndView(model,"animal_view.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/non_endangered/all", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<EndangeredAnimals> endangeredAll1=sql2oAnimalDao.findAll();
+            model.put("Not_endangered1", endangeredAll1);
+            return  new ModelAndView(model,"animal_view.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/endangered/all", (req, res) -> {
