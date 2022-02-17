@@ -19,7 +19,7 @@ An application that allows Rangers to track wildlife sightings in a forest.
 
 ## Live Page
 
-https://michael-kip.github.io/
+https://mombasa-raha-tu.herokuapp.com/
 
 ## Installation / Setup instruction
 
